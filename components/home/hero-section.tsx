@@ -30,7 +30,7 @@ export function HeroSection() {
                 </h1>
                 
                 <div className="mt-8">
-                  <h2 className="text-4xl font-bold leading-tight tracking-tighter md:text-6xl lg:text-7xl">
+                  <h2 className="text-2xl font-bold leading-tight tracking-tighter md:text-3xl lg:text-4xl">
                     Learn → Apply →{" "}
                     <span className="text-transparent bg-clip-text gradient-bg">
                       Earn
