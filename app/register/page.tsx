@@ -32,7 +32,7 @@ import {
 
 const userRoles = [
   { value: 'customer', label: 'Customer', icon: Users, description: 'Browse and purchase products', fee: 'Free' },
-  { value: 'affiliate', label: 'Affiliate Networker', icon: UserCheck, description: 'Promote products and earn commissions', fee: '₦10,000 lifetime' },
+  { value: 'affiliate', label: 'Affiliate Networker', icon: UserCheck, description: 'Promote products and earn commissions', fee: 'Free' },
   { value: 'vendor', label: 'Vendor', icon: Building, description: 'Sell your digital products', fee: 'Free (10% per sale)' }
 ];
 
@@ -186,10 +186,10 @@ export default function RegisterPage() {
                       ))}
                     </div>
                     {selectedRole?.value === 'affiliate' && (
-                      <div className="p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
-                        <p className="text-sm text-yellow-800 dark:text-yellow-200">
-                          <strong>Affiliate Networker:</strong> One-time ₦10,000 lifetime subscription 
-                          gives you access to all products, training materials, and affiliate tools.
+                      <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
+                        <p className="text-sm text-green-800 dark:text-green-200">
+                          <strong>Affiliate Networker:</strong> Join for free and start earning commissions 
+                          immediately! Get access to all products, training materials, and affiliate tools.
                         </p>
                       </div>
                     )}

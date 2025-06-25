@@ -83,7 +83,7 @@ export function AffiliateSection() {
           <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
             Whether you're looking for passive income, career change, or financial security, 
             you can easily become financially secure for a lifetime by promoting our digital 
-            products and joining the Hisnak Affiliate Networking Program.
+            products and joining the Hisnak Affiliate Networking Program - completely free!
           </p>
         </div>
 
@@ -99,7 +99,7 @@ export function AffiliateSection() {
                   Who Can Become an Affiliate Networker?
                 </h3>
                 <p className="text-muted-foreground">
-                  See if you qualify for our affiliate networking program
+                  See if you qualify for our free affiliate networking program
                 </p>
               </div>
               <ChevronDown className={`h-5 w-5 transition-transform ${openAffiliate ? 'rotate-180' : ''}`} />
@@ -130,10 +130,10 @@ export function AffiliateSection() {
               <h3 className="text-2xl font-semibold mb-4">How It Works</h3>
               <p className="text-muted-foreground">
                 It is simple to start earning money on Hisnak Affiliate Networking Marketplace. 
-                Here are simple steps: Sign up as an affiliate networker by paying ₦10,000 
-                lifetime subscription, learn how to run an affiliate networking business, 
-                start promoting any of our digital products, and you stand the chance to 
-                earn passive income weekly. You can get as high as 50% commission for each successful sale.
+                Here are simple steps: Sign up as an affiliate networker for free, 
+                learn how to run an affiliate networking business, start promoting any of our 
+                digital products, and you stand the chance to earn passive income weekly. 
+                You can get as high as 50% commission for each successful sale.
               </p>
             </div>
 
@@ -221,7 +221,7 @@ export function AffiliateSection() {
           <div className="space-y-4">
             <h3 className="text-2xl font-semibold">Ready to Get Started?</h3>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              You can get started today. Join thousands of successful affiliate 
+              You can get started today for free! Join thousands of successful affiliate 
               networkers who are already building their financial future.
             </p>
           </div>
@@ -230,7 +230,7 @@ export function AffiliateSection() {
             <Button size="lg" className="text-lg h-14 px-8" asChild>
               <Link href="/register">
                 <UserPlus className="mr-2 h-5 w-5" />
-                Join as Affiliate Networker
+                Join as Affiliate Networker - Free!
               </Link>
             </Button>
             
