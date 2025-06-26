@@ -27,7 +27,7 @@ const faqs = [
   },
   {
     question: "Is there a cost to join as an affiliate?",
-    answer: "Yes, there is a one-time ₦10,000 lifetime subscription fee to join as an affiliate networker. This gives you access to all products, training materials, and affiliate tools on the platform."
+    answer: "No, joining as an affiliate networker is completely free! There are no upfront costs, subscription fees, or hidden charges. You can start promoting products and earning commissions immediately after registration."
   },
   {
     question: "How does the referral system work?",
@@ -86,7 +86,7 @@ export function FAQSection() {
           <p className="text-muted-foreground">
             Still have questions?{" "}
             <a 
-              href="mailto:support@hisnak.com" 
+              href="mailto:admin@hisnak.com" 
               className="text-primary font-semibold hover:underline"
             >
               Contact our support team →

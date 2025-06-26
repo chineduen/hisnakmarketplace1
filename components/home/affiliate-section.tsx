@@ -236,8 +236,8 @@ export function AffiliateSection() {
             
             <Button size="lg" variant="outline" className="text-lg h-14 px-8">
               <span>For help, email us at: </span>
-              <Link href="mailto:support@hisnak.com" className="text-primary ml-1">
-                support@hisnak.com
+              <Link href="mailto:admin@hisnak.com" className="text-primary ml-1">
+                admin@hisnak.com
               </Link>
             </Button>
           </div>
