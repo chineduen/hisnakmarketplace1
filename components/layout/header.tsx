@@ -25,7 +25,10 @@ import {
   GraduationCap,
   Smartphone,
   LogIn,
-  UserPlus
+  UserPlus,
+  Info,
+  Rss,
+  Mail
 } from 'lucide-react';
 
 const productCategories = [
@@ -56,7 +59,23 @@ export function Header() {
             <NavigationMenu className="hidden lg:flex">
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger>Product Categories</NavigationMenuTrigger>
+                  <Link href="/about-program" legacyBehavior passHref>
+                    <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+                      About Hisnak Program
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <Link href="/blog" legacyBehavior passHref>
+                    <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+                      Learn N' Earn Blog
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger>Affiliate Products</NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                       {productCategories.map((category) => (
@@ -79,7 +98,15 @@ export function Header() {
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger>About Hisnak</NavigationMenuTrigger>
+                  <Link href="/contact" legacyBehavior passHref>
+                    <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+                      Contact Us
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger>More</NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                       <li className="row-span-3">
@@ -109,33 +136,26 @@ export function Header() {
                       </li>
                       <li>
                         <NavigationMenuLink asChild>
-                          <Link href="/compliance" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                            <div className="text-sm font-medium leading-none">Compliance</div>
+                          <Link href="/affiliate-program" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                            <div className="text-sm font-medium leading-none">Become an Affiliate</div>
                             <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                              Our legal and regulatory compliance guidelines.
+                              Join our affiliate networking program and start earning.
+                            </p>
+                          </Link>
+                        </NavigationMenuLink>
+                      </li>
+                      <li>
+                        <NavigationMenuLink asChild>
+                          <Link href="/vendor" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                            <div className="text-sm font-medium leading-none">Are You a Vendor?</div>
+                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                              List your products and reach global affiliates.
                             </p>
                           </Link>
                         </NavigationMenuLink>
                       </li>
                     </ul>
                   </NavigationMenuContent>
-                </NavigationMenuItem>
-
-                <NavigationMenuItem>
-                  <Link href="/affiliate-program" legacyBehavior passHref>
-                    <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
-                      Become an Affiliate
-                      <Badge variant="secondary" className="ml-2">New</Badge>
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-
-                <NavigationMenuItem>
-                  <Link href="/vendor" legacyBehavior passHref>
-                    <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
-                      Are You a Vendor?
-                    </NavigationMenuLink>
-                  </Link>
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
@@ -174,6 +194,21 @@ export function Header() {
                     <UserPlus className="h-5 w-5" />
                     <span>Create Free Account</span>
                   </Link>
+                  <div className="border-t pt-4">
+                    <h4 className="font-medium mb-2">Main Pages</h4>
+                    <Link href="/about-program" className="flex items-center space-x-2 py-2 text-sm text-muted-foreground hover:text-foreground">
+                      <Info className="h-4 w-4" />
+                      <span>About Hisnak Program</span>
+                    </Link>
+                    <Link href="/blog" className="flex items-center space-x-2 py-2 text-sm text-muted-foreground hover:text-foreground">
+                      <Rss className="h-4 w-4" />
+                      <span>Learn N' Earn Blog</span>
+                    </Link>
+                    <Link href="/contact" className="flex items-center space-x-2 py-2 text-sm text-muted-foreground hover:text-foreground">
+                      <Mail className="h-4 w-4" />
+                      <span>Contact Us</span>
+                    </Link>
+                  </div>
                   <div className="border-t pt-4">
                     <h4 className="font-medium mb-2">Product Categories</h4>
                     {productCategories.map((category) => (
