@@ -28,7 +28,8 @@ import {
   UserPlus,
   Info,
   Rss,
-  Mail
+  Mail,
+  DollarSign
 } from 'lucide-react';
 
 const productCategories = [
@@ -58,6 +59,15 @@ export function Header() {
 
             <NavigationMenu className="hidden lg:flex">
               <NavigationMenuList>
+                <NavigationMenuItem>
+                  <Link href="/learn-earn" legacyBehavior passHref>
+                    <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+                      Learn N' Earn
+                      <Badge variant="secondary" className="ml-2 bg-gradient-to-r from-primary to-accent text-white">Hot</Badge>
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+
                 <NavigationMenuItem>
                   <Link href="/about-program" legacyBehavior passHref>
                     <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
@@ -196,6 +206,11 @@ export function Header() {
                   </Link>
                   <div className="border-t pt-4">
                     <h4 className="font-medium mb-2">Main Pages</h4>
+                    <Link href="/learn-earn" className="flex items-center space-x-2 py-2 text-sm text-muted-foreground hover:text-foreground">
+                      <DollarSign className="h-4 w-4" />
+                      <span>Learn N' Earn</span>
+                      <Badge variant="secondary" className="ml-auto bg-gradient-to-r from-primary to-accent text-white text-xs">Hot</Badge>
+                    </Link>
                     <Link href="/about-program" className="flex items-center space-x-2 py-2 text-sm text-muted-foreground hover:text-foreground">
                       <Info className="h-4 w-4" />
                       <span>About Hisnak Program</span>
