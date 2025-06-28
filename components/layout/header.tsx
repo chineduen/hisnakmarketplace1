@@ -12,7 +12,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
 import { Badge } from '@/components/ui/badge';
 import { 
   Menu, 
@@ -205,6 +205,7 @@ export function Header() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                <SheetTitle className="sr-only">Main Navigation</SheetTitle>
                 <nav className="flex flex-col space-y-4">
                   <Link href="/login" className="flex items-center space-x-2 text-lg font-medium">
                     <LogIn className="h-5 w-5" />
