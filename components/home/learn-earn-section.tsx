@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { 
   ArrowRight, 
   Users, 
@@ -73,6 +73,9 @@ export function LearnEarnSection() {
             </DialogTrigger>
             
             <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto p-0 bg-background">
+              <DialogTitle className="sr-only">
+                Learn N' Earn - Hisnak Affiliate Networking Program
+              </DialogTitle>
               <div className="relative">
                 <div className="sticky top-0 z-10 bg-background/95 backdrop-blur-sm border-b p-6">
                   <div className="flex items-center justify-between">
