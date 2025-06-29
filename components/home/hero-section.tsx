@@ -13,15 +13,15 @@ export function HeroSection() {
         <div className="grid gap-12 py-20 md:py-32 lg:grid-cols-2 lg:gap-20">
           <div className="flex flex-col justify-center space-y-8">
             <div className="space-y-6">
-              <div className="space-y-4 text-center">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight tracking-tighter text-justify">
-                  <span className="block text-transparent bg-clip-text gradient-bg mb-4">
+              <div className="space-y-8 text-center">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight tracking-tighter">
+                  <span className="block text-transparent bg-clip-text gradient-bg">
                     The Future of Affiliate Industry Starts Here
                   </span>
                 </h1>
                 
-                <div className="mt-8">
-                  <h2 className="text-2xl font-bold leading-tight tracking-tighter md:text-3xl lg:text-4xl text-justify">
+                <div className="mt-12">
+                  <h2 className="text-2xl font-bold leading-tight tracking-tighter md:text-3xl lg:text-4xl">
                     Learn → Apply →{" "}
                     <span className="text-transparent bg-clip-text gradient-bg">
                       Earn
@@ -31,7 +31,7 @@ export function HeroSection() {
                 </div>
               </div>
               
-              <p className="max-w-[600px] text-xl text-muted-foreground md:text-2xl leading-relaxed mx-auto text-justify">
+              <p className="max-w-[600px] text-xl text-muted-foreground md:text-2xl leading-relaxed mx-auto text-center">
                 Join the world's most advanced AI-powered affiliate networking marketplace. 
                 Connect with global vendors, promote premium products, and build your 
                 passive income empire.
