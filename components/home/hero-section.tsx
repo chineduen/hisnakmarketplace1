@@ -14,23 +14,14 @@ export function HeroSection() {
           <div className="flex flex-col justify-center space-y-8">
             <div className="space-y-6">
               <div className="space-y-4 text-center">
-                <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black leading-none tracking-tighter">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight tracking-tighter text-justify">
                   <span className="block text-transparent bg-clip-text gradient-bg mb-4">
-                    THE FUTURE
-                  </span>
-                  <span className="block text-foreground">
-                    OF THE
-                  </span>
-                  <span className="block text-transparent bg-clip-text gradient-bg">
-                    AFFILIATE
-                  </span>
-                  <span className="block text-foreground">
-                    INDUSTRY
+                    The Future of Affiliate Industry Starts Here
                   </span>
                 </h1>
                 
                 <div className="mt-8">
-                  <h2 className="text-2xl font-bold leading-tight tracking-tighter md:text-3xl lg:text-4xl">
+                  <h2 className="text-2xl font-bold leading-tight tracking-tighter md:text-3xl lg:text-4xl text-justify">
                     Learn → Apply →{" "}
                     <span className="text-transparent bg-clip-text gradient-bg">
                       Earn
@@ -40,7 +31,7 @@ export function HeroSection() {
                 </div>
               </div>
               
-              <p className="max-w-[600px] text-xl text-muted-foreground md:text-2xl leading-relaxed mx-auto text-center">
+              <p className="max-w-[600px] text-xl text-muted-foreground md:text-2xl leading-relaxed mx-auto text-justify">
                 Join the world's most advanced AI-powered affiliate networking marketplace. 
                 Connect with global vendors, promote premium products, and build your 
                 passive income empire.
