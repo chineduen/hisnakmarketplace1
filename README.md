@@ -1,10 +1,10 @@
 
-## Hismak Marketplace – Frontend
+## Hisnak Marketplace – Frontend
 
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
-Hismak Marketplace is an affiliate networking and digital product platform designed to empower creators and entrepreneurs to sell skill-based services, educational programs, apps, and more.
+Hisnak Marketplace is an affiliate networking and digital product platform designed to empower creators and entrepreneurs to sell skill-based services, educational programs, apps, and more.
 
 This is the frontend repository, built using Next.js, React, Tailwind CSS, and TypeScript, and optimized for deployment on platforms like AWS Amplify and Vercel.
 
@@ -59,9 +59,6 @@ AWS Amplify
 Vercel
 
 Netlify (optional for static hosting)
-
-Preview Deployment Link
-Coming soon: https://hisnak.name.ng
 
 Screenshots
 <!-- Uncomment and add screenshots when available ### 🖼 Home Page ![Home Screenshot](screenshots/home.png) ### 💻 Dashboard ![Dashboard Screenshot](screenshots/dashboard.png) -->
