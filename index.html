@@ -602,6 +602,139 @@
         .modal-close:hover {
             color: var(--foreground);
         }
+
+        /* Challenge Form Styles */
+        .challenge-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--foreground);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(30, 58, 138, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 1rem;
+            background: white;
+            cursor: pointer;
+        }
+
+        .form-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-checkbox input {
+            margin-top: 0.25rem;
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--muted);
+            border-radius: var(--radius);
+        }
+
+        .form-section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .form-grid-2 {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 50%, var(--gold) 100%);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.3);
+        }
+
+        .form-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .success-message {
+            display: none;
+            padding: 1rem;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: var(--radius);
+            color: #16a34a;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 767px) {
+            .form-grid-2 {
+                grid-template-columns: 1fr;
+            }
+            
+            .challenge-form {
+                padding: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -853,15 +986,15 @@
             <div class="cta-content">
                 <h2 class="cta-title">Win ₦2,000,000! 💰</h2>
                 <p class="cta-description">
-                    Be the first to reach 500 direct sales by June 30th, 2025, and walk away with 
+                    Be the first to reach 500 direct sales by June 30th, 2026, and walk away with 
                     ₦2,000,000 in cash!
                 </p>
                 <div class="cta-buttons">
-                    <a href="#register" class="btn btn-white btn-lg">
+                    <button class="btn btn-white btn-lg" onclick="openChallengeModal()">
                         <i data-lucide="users"></i>
-                        Register to Join the Challenge!
+                        Join the Challenge Here!
                         <i data-lucide="arrow-right"></i>
-                    </a>
+                    </button>
                     <button class="btn btn-outline btn-lg" onclick="openLearnEarnModal()" style="color: white; border-color: rgba(255,255,255,0.3);">
                         Learn More About the Program
                     </button>
@@ -1014,6 +1147,179 @@
         </div>
     </div>
 
+    <!-- Challenge Registration Modal -->
+    <div id="challengeModal" class="modal">
+        <div class="modal-content" style="max-width: 900px;">
+            <button class="modal-close" onclick="closeChallengeModal()">
+                <i data-lucide="x"></i>
+            </button>
+            
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <div class="section-badge" style="margin-bottom: 1rem;">
+                    🏆 ₦2,000,000 Sales Challenge
+                </div>
+                <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">
+                    Join the Challenge Here!
+                </h2>
+                <p style="font-size: 1.25rem; color: var(--muted-foreground); margin-bottom: 1rem;">
+                    Register for the ₦2,000,000 Sales Challenge - First to reach 500 direct sales wins!
+                </p>
+                <div style="padding: 1rem; background: rgba(217, 119, 6, 0.1); border: 1px solid rgba(217, 119, 6, 0.2); border-radius: var(--radius);">
+                    <p style="font-weight: 600; color: var(--gold);">
+                        🗓️ Challenge Period: January 1, 2026 - June 30, 2026
+                    </p>
+                </div>
+            </div>
+
+            <form id="challengeForm" class="challenge-form" style="max-width: none; padding: 0; background: none; box-shadow: none;">
+                <div class="success-message" id="successMessage">
+                    <strong>Registration Successful!</strong> Your challenge registration has been submitted. We'll contact you with your tracking details soon.
+                </div>
+
+                <!-- Basic Participant Details -->
+                <div class="form-section">
+                    <h3 class="form-section-title">
+                        <i data-lucide="user"></i>
+                        Basic Participant Details
+                    </h3>
+                    <div class="form-grid form-grid-2">
+                        <div class="form-group">
+                            <label class="form-label" for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                        </div>
+                    </div>
+                    <div class="form-grid form-grid-2">
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Phone Number (WhatsApp preferred) *</label>
+                            <input type="tel" id="phone" name="phone" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="location">Location (City, State & Country) *</label>
+                            <input type="text" id="location" name="location" class="form-input" placeholder="e.g., Lagos, Lagos State, Nigeria" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Account & Sales Tracking Info -->
+                <div class="form-section">
+                    <h3 class="form-section-title">
+                        <i data-lucide="settings"></i>
+                        Account & Sales Tracking Info
+                    </h3>
+                    <div class="form-grid form-grid-2">
+                        <div class="form-group">
+                            <label class="form-label" for="affiliateId">Affiliate ID or Username *</label>
+                            <input type="text" id="affiliateId" name="affiliateId" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="trackingPasscode">Sales Tracking Passcode *</label>
+                            <input type="text" id="trackingPasscode" name="trackingPasscode" class="form-input" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Business or Product Sales Info -->
+                <div class="form-section">
+                    <h3 class="form-section-title">
+                        <i data-lucide="briefcase"></i>
+                        Business or Product Sales Info
+                    </h3>
+                    <div class="form-group">
+                        <label class="form-label" for="productService">Product or Service Being Promoted</label>
+                        <input type="text" id="productService" name="productService" class="form-input" value="A Beginner's Blueprint to Passive Income Generation" readonly>
+                        <small style="color: var(--muted-foreground); font-size: 0.875rem;">Default product for the challenge</small>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="targetAudience">Target Audience or Niche *</label>
+                        <textarea id="targetAudience" name="targetAudience" class="form-input form-textarea" placeholder="Describe your target audience (e.g., young professionals, students, stay-at-home parents, etc.)" required></textarea>
+                        <small style="color: var(--muted-foreground); font-size: 0.875rem;">This helps us provide tailored performance tips and resources</small>
+                    </div>
+                </div>
+
+                <!-- Payment Details -->
+                <div class="form-section">
+                    <h3 class="form-section-title">
+                        <i data-lucide="credit-card"></i>
+                        Payment Details (For Winner Payout)
+                    </h3>
+                    <div class="form-grid form-grid-2">
+                        <div class="form-group">
+                            <label class="form-label" for="bankName">Bank Name *</label>
+                            <input type="text" id="bankName" name="bankName" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="accountNumber">Bank Account Number *</label>
+                            <input type="text" id="accountNumber" name="accountNumber" class="form-input" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="accountHolder">Account Holder Name *</label>
+                        <input type="text" id="accountHolder" name="accountHolder" class="form-input" placeholder="Name as it appears on your bank account" required>
+                    </div>
+                </div>
+
+                <!-- Optional But Useful -->
+                <div class="form-section">
+                    <h3 class="form-section-title">
+                        <i data-lucide="share-2"></i>
+                        Optional But Useful
+                    </h3>
+                    <div class="form-grid form-grid-2">
+                        <div class="form-group">
+                            <label class="form-label" for="instagram">Instagram Handle</label>
+                            <input type="text" id="instagram" name="instagram" class="form-input" placeholder="@yourusername">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="facebook">Facebook Profile/Page</label>
+                            <input type="text" id="facebook" name="facebook" class="form-input" placeholder="facebook.com/yourprofile">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="otherSocial">Other Social Media Handles</label>
+                        <textarea id="otherSocial" name="otherSocial" class="form-input" placeholder="Twitter, TikTok, LinkedIn, etc." style="min-height: 80px;"></textarea>
+                        <small style="color: var(--muted-foreground); font-size: 0.875rem;">For shout-outs and leaderboard updates</small>
+                    </div>
+                </div>
+
+                <!-- Declaration/Agreement -->
+                <div class="form-section">
+                    <h3 class="form-section-title">
+                        <i data-lucide="file-check"></i>
+                        Declaration/Agreement
+                    </h3>
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                        <label for="agreeTerms" class="form-label" style="margin-bottom: 0;">
+                            I agree to the terms of the competition.
+                        </label>
+                    </div>
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="agreePrize" name="agreePrize" required>
+                        <label for="agreePrize" class="form-label" style="margin-bottom: 0;">
+                            I understand the ₦2,000,000 prize is awarded only to the first participant to reach 500 confirmed direct sales, kicks off from January 1, 2026 to June 30, 2026.
+                        </label>
+                    </div>
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="agreeVerification" name="agreeVerification" required>
+                        <label for="agreeVerification" class="form-label" style="margin-bottom: 0;">
+                            I agree to sales being verified before payout.
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="form-submit" id="submitBtn">
+                    <i data-lucide="trophy"></i>
+                    Register for ₦2,000,000 Challenge
+                    <i data-lucide="arrow-right"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
     <script>
         // Initialize Lucide icons
         lucide.createIcons();
@@ -1035,13 +1341,78 @@
             document.body.style.overflow = 'auto';
         }
 
+        // Challenge Modal
+        function openChallengeModal() {
+            document.getElementById('challengeModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeChallengeModal() {
+            document.getElementById('challengeModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
         // Close modal when clicking outside
         window.onclick = function(event) {
-            const modal = document.getElementById('learnEarnModal');
-            if (event.target === modal) {
+            const learnModal = document.getElementById('learnEarnModal');
+            const challengeModal = document.getElementById('challengeModal');
+            
+            if (event.target === learnModal) {
                 closeLearnEarnModal();
             }
+            if (event.target === challengeModal) {
+                closeChallengeModal();
+            }
         }
+
+        // Challenge Form Submission
+        document.getElementById('challengeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const successMessage = document.getElementById('successMessage');
+            
+            // Disable submit button
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i data-lucide="loader"></i> Submitting Registration...';
+            
+            // Simulate form submission (replace with actual API call)
+            setTimeout(() => {
+                // Show success message
+                successMessage.style.display = 'block';
+                
+                // Reset form
+                document.getElementById('challengeForm').reset();
+                
+                // Re-enable submit button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i data-lucide="trophy"></i> Register for ₦2,000,000 Challenge <i data-lucide="arrow-right"></i>';
+                
+                // Reinitialize icons
+                lucide.createIcons();
+                
+                // Auto-close modal after 3 seconds
+                setTimeout(() => {
+                    closeChallengeModal();
+                    successMessage.style.display = 'none';
+                }, 3000);
+                
+                // Here you would typically:
+                // 1. Send data to your backend API
+                // 2. Set up tracking on their dashboard
+                // 3. Send confirmation email
+                console.log('Challenge registration submitted successfully');
+                
+            }, 2000);
+        });
+
+        // Auto-fill account holder name from full name
+        document.getElementById('fullName').addEventListener('input', function() {
+            const accountHolderField = document.getElementById('accountHolder');
+            if (!accountHolderField.value) {
+                accountHolderField.value = this.value;
+            }
+        });
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
