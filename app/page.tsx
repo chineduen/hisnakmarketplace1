@@ -1,4 +1,5 @@
 import { HeroSection } from '@/components/home/hero-section';
+import { LearnEarnSection } from '@/components/home/learn-earn-section';
 import { StatsSection } from '@/components/home/stats-section';
 import { ProductShowcase } from '@/components/home/product-showcase';
 import { CommissionStructure } from '@/components/home/commission-structure';
@@ -16,6 +17,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-background">
       <Header />
       <main>
+        <LearnEarnSection />
         <HeroSection />
         <StatsSection />
         <ProductShowcase />
