@@ -15,13 +15,38 @@ import {
   Users,
   BookOpen,
   Target,
-  Lightbulb
+  Lightbulb,
+  Heart
 } from 'lucide-react';
 import Link from 'next/link';
 
 const blogPosts = [
   {
     id: 1,
+    title: 'Solution to Poverty',
+    excerpt: 'How the Hisnak Affiliate Networking Program is breaking the cycle of poverty through digital empowerment, skill development, and sustainable income opportunities.',
+    category: 'Social Impact',
+    author: 'Hisnak Team',
+    date: '2024-01-22',
+    readTime: '12 min read',
+    image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg',
+    featured: true,
+    slug: 'solution-to-poverty'
+  },
+  {
+    id: 2,
+    title: 'How to Transform Your Life with Affiliate Networking',
+    excerpt: 'A comprehensive guide to building sustainable passive income through the Hisnak Affiliate Networking Program - from zero to ₦500K monthly earnings.',
+    category: 'Getting Started',
+    author: 'Hisnak Team',
+    date: '2024-01-20',
+    readTime: '15 min read',
+    image: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg',
+    featured: true,
+    slug: 'how-to-transform-your-life-with-affiliate-networking'
+  },
+  {
+    id: 3,
     title: 'How to Start Your Affiliate Marketing Journey in 2024',
     excerpt: 'A comprehensive guide for beginners looking to enter the world of affiliate marketing and build sustainable passive income.',
     category: 'Getting Started',
@@ -29,10 +54,11 @@ const blogPosts = [
     date: '2024-01-15',
     readTime: '8 min read',
     image: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg',
-    featured: true
+    featured: false,
+    slug: 'how-to-start-affiliate-marketing-2024'
   },
   {
-    id: 2,
+    id: 4,
     title: '10 Proven Strategies to Increase Your Affiliate Commissions',
     excerpt: 'Learn the advanced techniques that top affiliate networkers use to maximize their earnings and build successful businesses.',
     category: 'Strategies',
@@ -40,10 +66,11 @@ const blogPosts = [
     date: '2024-01-12',
     readTime: '12 min read',
     image: 'https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg',
-    featured: false
+    featured: false,
+    slug: '10-proven-strategies'
   },
   {
-    id: 3,
+    id: 5,
     title: 'The Psychology of Successful Affiliate Networking',
     excerpt: 'Understanding the mindset and psychological principles that drive successful affiliate relationships and long-term success.',
     category: 'Psychology',
@@ -51,10 +78,11 @@ const blogPosts = [
     date: '2024-01-10',
     readTime: '10 min read',
     image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg',
-    featured: false
+    featured: false,
+    slug: 'psychology-of-success'
   },
   {
-    id: 4,
+    id: 6,
     title: 'Building Your Personal Brand as an Affiliate Networker',
     excerpt: 'How to establish credibility, build trust, and create a personal brand that attracts customers and partners.',
     category: 'Branding',
@@ -62,10 +90,11 @@ const blogPosts = [
     date: '2024-01-08',
     readTime: '15 min read',
     image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg',
-    featured: false
+    featured: false,
+    slug: 'building-personal-brand'
   },
   {
-    id: 5,
+    id: 7,
     title: 'Digital Marketing Tools Every Affiliate Should Know',
     excerpt: 'Essential tools and platforms that can help you automate, track, and optimize your affiliate marketing efforts.',
     category: 'Tools',
@@ -73,10 +102,11 @@ const blogPosts = [
     date: '2024-01-05',
     readTime: '11 min read',
     image: 'https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg',
-    featured: false
+    featured: false,
+    slug: 'digital-marketing-tools'
   },
   {
-    id: 6,
+    id: 8,
     title: 'Success Stories: From Zero to ₦500K Monthly',
     excerpt: 'Real stories from Hisnak affiliates who transformed their lives through dedication, strategy, and consistent action.',
     category: 'Success Stories',
@@ -84,17 +114,19 @@ const blogPosts = [
     date: '2024-01-03',
     readTime: '9 min read',
     image: 'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg',
-    featured: false
+    featured: false,
+    slug: 'success-stories'
   }
 ];
 
 const categories = [
-  { name: 'All Posts', count: 25, icon: BookOpen },
-  { name: 'Getting Started', count: 8, icon: Target },
+  { name: 'All Posts', count: 28, icon: BookOpen },
+  { name: 'Getting Started', count: 10, icon: Target },
   { name: 'Strategies', count: 6, icon: TrendingUp },
   { name: 'Success Stories', count: 5, icon: Users },
   { name: 'Tools', count: 4, icon: Lightbulb },
-  { name: 'Psychology', count: 2, icon: User }
+  { name: 'Psychology', count: 2, icon: User },
+  { name: 'Social Impact', count: 1, icon: Heart }
 ];
 
 export default function BlogPage() {
@@ -144,7 +176,7 @@ export default function BlogPage() {
           </div>
 
           <div className="lg:col-span-3 space-y-8">
-            {/* Featured Post */}
+            {/* Featured Posts */}
             {blogPosts.filter(post => post.featured).map((post) => (
               <Card key={post.id} className="border-0 shadow-lg bg-gradient-to-r from-primary/5 to-accent/5 overflow-hidden">
                 <div className="grid gap-6 md:grid-cols-2">
@@ -182,7 +214,7 @@ export default function BlogPage() {
                         </div>
                       </div>
                       <Button asChild>
-                        <Link href={`/blog/${post.id}`}>
+                        <Link href={`/blog/${post.slug}`}>
                           Read Full Article
                           <ArrowRight className="ml-2 h-4 w-4" />
                         </Link>
@@ -235,7 +267,7 @@ export default function BlogPage() {
                       </div>
                     </div>
                     <Button variant="outline" size="sm" className="w-full" asChild>
-                      <Link href={`/blog/${post.id}`}>
+                      <Link href={`/blog/${post.slug}`}>
                         Read More
                         <ArrowRight className="ml-2 h-3 w-3" />
                       </Link>
