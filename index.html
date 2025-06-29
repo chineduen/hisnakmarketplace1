@@ -1,13 +1,1102 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hisnak Marketplace - AI-Powered Affiliate Networking Platform</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hisnak Marketplace - The Future of Affiliate Industry</title>
+    <meta name="description" content="AI-powered affiliate networking marketplace connecting vendors, affiliates, and customers worldwide. Learn → Apply → Earn → Scale.">
+    <meta name="keywords" content="affiliate marketing, digital products, passive income, network marketing, e-commerce">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Hisnak Marketplace - AI-Powered Affiliate Networking">
+    <meta property="og:description" content="Join the future of affiliate industry with our innovative marketplace platform.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hisnak.com">
+    <meta property="og:image" content="https://hisnak.com/og-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Styles -->
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #3b82f6;
+            --accent: #059669;
+            --accent-light: #10b981;
+            --gold: #d97706;
+            --background: #ffffff;
+            --foreground: #0f172a;
+            --muted: #f8fafc;
+            --muted-foreground: #64748b;
+            --border: #e2e8f0;
+            --card: #ffffff;
+            --card-foreground: #0f172a;
+            --radius: 0.5rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--foreground);
+            background-color: var(--background);
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 4rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .logo-dots {
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        .dot {
+            width: 0.75rem;
+            height: 1.5rem;
+            border-radius: 9999px;
+        }
+
+        .dot-1 { background-color: var(--primary); }
+        .dot-2 { background-color: var(--accent); }
+        .dot-3 { background-color: var(--gold); }
+
+        .nav-links {
+            display: none;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--foreground);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            font-size: 0.875rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 50%, var(--gold) 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--foreground);
+            border: 1px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            background: var(--muted);
+        }
+
+        .btn-lg {
+            padding: 0.75rem 2rem;
+            font-size: 1rem;
+        }
+
+        .mobile-menu {
+            display: block;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.05) 0%, rgba(5, 150, 105, 0.05) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(circle at 25% 25%, rgba(30, 58, 138, 0.1) 0%, transparent 50%),
+                              radial-gradient(circle at 75% 75%, rgba(5, 150, 105, 0.1) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 50%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--foreground);
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            color: var(--muted-foreground);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+        }
+
+        /* Learn N' Earn Section */
+        .learn-earn {
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .learn-earn-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem 3rem;
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 50%, var(--gold) 100%);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.3);
+        }
+
+        .learn-earn-btn:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(30, 58, 138, 0.4);
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 5rem 0;
+            background: var(--muted);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-card {
+            background: var(--card);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            width: 3rem;
+            height: 3rem;
+            margin: 0 auto 1rem;
+            padding: 0.75rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--muted-foreground);
+            font-size: 0.875rem;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            font-size: 1.25rem;
+            color: var(--muted-foreground);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--card);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            width: 3rem;
+            height: 3rem;
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .feature-description {
+            color: var(--muted-foreground);
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-description {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-white:hover {
+            background: var(--muted);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--muted);
+            padding: 3rem 0 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: var(--muted-foreground);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--muted-foreground);
+            font-size: 0.875rem;
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 4rem;
+            }
+
+            .hero-buttons {
+                flex-wrap: nowrap;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
+
+            .learn-earn-btn {
+                font-size: 1.5rem;
+                padding: 1rem 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cta-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-content {
+            background-color: var(--background);
+            margin: 2% auto;
+            padding: 2rem;
+            border-radius: var(--radius);
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--muted-foreground);
+        }
+
+        .modal-close:hover {
+            color: var(--foreground);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="#" class="logo">
+                <div class="logo-dots">
+                    <div class="dot dot-1"></div>
+                    <div class="dot dot-2"></div>
+                    <div class="dot dot-3"></div>
+                </div>
+                Hisnak Marketplace
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Program</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            
+            <div class="nav-buttons">
+                <a href="#login" class="btn btn-outline">Login</a>
+                <a href="#register" class="btn btn-primary">Create Free Account</a>
+            </div>
+            
+            <button class="mobile-menu" onclick="toggleMobileMenu()">
+                <i data-lucide="menu"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content animate-fade-in">
+                <div class="hero-badge">
+                    🔥 Limited Time Offer - 80% OFF!
+                </div>
+                
+                <h1 class="hero-title">
+                    The Future of Affiliate Industry Starts Here
+                </h1>
+                
+                <h2 class="hero-subtitle">
+                    Learn → Apply → <span style="background: linear-gradient(135deg, #1e3a8a, #059669); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Earn</span> → Scale
+                </h2>
+                
+                <p class="hero-description">
+                    Join the world's most advanced AI-powered affiliate networking marketplace. 
+                    Connect with global vendors, promote premium products, and build your 
+                    passive income empire.
+                </p>
+                
+                <div class="hero-buttons">
+                    <button class="btn btn-primary btn-lg" onclick="openLearnEarnModal()">
+                        <i data-lucide="zap"></i>
+                        Learn N' Earn
+                        <i data-lucide="arrow-right"></i>
+                    </button>
+                    <a href="#features" class="btn btn-outline btn-lg">
+                        <i data-lucide="play"></i>
+                        Watch Demo
+                    </a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div style="display: flex; margin-right: 0.5rem;">
+                            <div style="width: 2rem; height: 2rem; border-radius: 50%; background: var(--primary); margin-right: -0.5rem;"></div>
+                            <div style="width: 2rem; height: 2rem; border-radius: 50%; background: var(--accent); margin-right: -0.5rem;"></div>
+                            <div style="width: 2rem; height: 2rem; border-radius: 50%; background: var(--gold);"></div>
+                        </div>
+                        10K+ Active Affiliates
+                    </div>
+                    <div class="stat">
+                        <i data-lucide="star" style="color: #fbbf24; fill: #fbbf24;"></i>
+                        <i data-lucide="star" style="color: #fbbf24; fill: #fbbf24;"></i>
+                        <i data-lucide="star" style="color: #fbbf24; fill: #fbbf24;"></i>
+                        <i data-lucide="star" style="color: #fbbf24; fill: #fbbf24;"></i>
+                        <i data-lucide="star" style="color: #fbbf24; fill: #fbbf24;"></i>
+                        4.9/5 Rating
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learn N' Earn Section -->
+    <section class="learn-earn">
+        <div class="container">
+            <button class="learn-earn-btn" onclick="openLearnEarnModal()">
+                <i data-lucide="zap"></i>
+                Learn N' Earn
+                <i data-lucide="arrow-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Showcasing Results</div>
+                <h2 class="section-title">
+                    Trusted by Thousands of <span style="background: linear-gradient(135deg, #1e3a8a, #059669); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Affiliate Networkers</span>
+                </h2>
+                <p class="section-description">
+                    Join a thriving community of successful affiliate networkers who are 
+                    building sustainable passive income through our platform.
+                </p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: rgba(30, 58, 138, 0.1);">
+                        <i data-lucide="users" style="color: var(--primary);"></i>
+                    </div>
+                    <div class="stat-value">10K+</div>
+                    <div class="stat-label">Registered Affiliate Networkers</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: rgba(5, 150, 105, 0.1);">
+                        <i data-lucide="award" style="color: var(--accent);"></i>
+                    </div>
+                    <div class="stat-value">6K+</div>
+                    <div class="stat-label">Active Affiliate Networkers</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: rgba(217, 119, 6, 0.1);">
+                        <i data-lucide="dollar-sign" style="color: var(--gold);"></i>
+                    </div>
+                    <div class="stat-value">₦20M</div>
+                    <div class="stat-label">In Affiliate Sales</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: rgba(34, 197, 94, 0.1);">
+                        <i data-lucide="trending-up" style="color: #22c55e;"></i>
+                    </div>
+                    <div class="stat-value">₦5M</div>
+                    <div class="stat-label">Paid to Affiliate Networkers</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: rgba(239, 68, 68, 0.1);">
+                        <i data-lucide="target" style="color: #ef4444;"></i>
+                    </div>
+                    <div class="stat-value">5K+</div>
+                    <div class="stat-label">Affiliate Networkers Earn Monthly</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: rgba(147, 51, 234, 0.1);">
+                        <i data-lucide="shopping-bag" style="color: #9333ea;"></i>
+                    </div>
+                    <div class="stat-value">100K+</div>
+                    <div class="stat-label">Products Sold</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">About Hisnak Marketplace</div>
+                <h2 class="section-title">
+                    Redefining the Future of <span style="background: linear-gradient(135deg, #1e3a8a, #059669); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Digital Commerce</span>
+                </h2>
+                <p class="section-description">
+                    Hisnak Marketplace is an affiliate networking & ecommerce platform that connects 
+                    vendors, affiliate networkers, and buyers of digital products and services.
+                </p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: rgba(30, 58, 138, 0.1);">
+                        <i data-lucide="globe" style="color: var(--primary);"></i>
+                    </div>
+                    <h3 class="feature-title">Global Marketplace</h3>
+                    <p class="feature-description">
+                        Connect with vendors and affiliates worldwide through our borderless platform.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: rgba(5, 150, 105, 0.1);">
+                        <i data-lucide="users" style="color: var(--accent);"></i>
+                    </div>
+                    <h3 class="feature-title">Networking Focus</h3>
+                    <p class="feature-description">
+                        Build lasting relationships and grow your affiliate network with advanced tools.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: rgba(217, 119, 6, 0.1);">
+                        <i data-lucide="shield" style="color: var(--gold);"></i>
+                    </div>
+                    <h3 class="feature-title">Secure & Compliant</h3>
+                    <p class="feature-description">
+                        Enterprise-grade security with full regulatory compliance across all markets.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: rgba(239, 68, 68, 0.1);">
+                        <i data-lucide="zap" style="color: #ef4444;"></i>
+                    </div>
+                    <h3 class="feature-title">AI-Powered</h3>
+                    <p class="feature-description">
+                        Leverage cutting-edge AI for product recommendations and performance optimization.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: rgba(34, 197, 94, 0.1);">
+                        <i data-lucide="trending-up" style="color: #22c55e;"></i>
+                    </div>
+                    <h3 class="feature-title">Performance-Based</h3>
+                    <p class="feature-description">
+                        Earn based on your performance with transparent commission structures.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: rgba(147, 51, 234, 0.1);">
+                        <i data-lucide="graduation-cap" style="color: #9333ea;"></i>
+                    </div>
+                    <h3 class="feature-title">Comprehensive Training</h3>
+                    <p class="feature-description">
+                        Access to world-class training materials, webinars, and mentorship programs.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Win ₦2,000,000! 💰</h2>
+                <p class="cta-description">
+                    Be the first to reach 500 direct sales by June 30th, 2025, and walk away with 
+                    ₦2,000,000 in cash!
+                </p>
+                <div class="cta-buttons">
+                    <a href="#register" class="btn btn-white btn-lg">
+                        <i data-lucide="users"></i>
+                        Register to Join the Challenge!
+                        <i data-lucide="arrow-right"></i>
+                    </a>
+                    <button class="btn btn-outline btn-lg" onclick="openLearnEarnModal()" style="color: white; border-color: rgba(255,255,255,0.3);">
+                        Learn More About the Program
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <a href="#" class="logo" style="margin-bottom: 1rem; display: inline-flex;">
+                        <div class="logo-dots">
+                            <div class="dot dot-1"></div>
+                            <div class="dot dot-2"></div>
+                            <div class="dot dot-3"></div>
+                        </div>
+                        Hisnak
+                    </a>
+                    <p style="color: var(--muted-foreground); margin-bottom: 1rem;">
+                        The future of affiliate industry. Empowering entrepreneurs through 
+                        AI-powered networking and innovative e-commerce solutions.
+                    </p>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <a href="#" style="padding: 0.5rem; background: var(--muted); border-radius: var(--radius); color: var(--muted-foreground);">
+                            <i data-lucide="facebook"></i>
+                        </a>
+                        <a href="#" style="padding: 0.5rem; background: var(--muted); border-radius: var(--radius); color: var(--muted-foreground);">
+                            <i data-lucide="twitter"></i>
+                        </a>
+                        <a href="#" style="padding: 0.5rem; background: var(--muted); border-radius: var(--radius); color: var(--muted-foreground);">
+                            <i data-lucide="instagram"></i>
+                        </a>
+                        <a href="#" style="padding: 0.5rem; background: var(--muted); border-radius: var(--radius); color: var(--muted-foreground);">
+                            <i data-lucide="linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#affiliate">Become an Affiliate</a></li>
+                        <li><a href="#vendor">Are You a Vendor?</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#help">Help Center</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Product Categories</h3>
+                    <ul>
+                        <li><a href="#skills">Skill-Based Products</a></li>
+                        <li><a href="#information">Information Products</a></li>
+                        <li><a href="#education">Educational Programs</a></li>
+                        <li><a href="#events">Event Tickets</a></li>
+                        <li><a href="#software">App Software</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; color: var(--muted-foreground);">
+                        <i data-lucide="mail"></i>
+                        <span>admin@hisnak.com</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; color: var(--muted-foreground);">
+                        <i data-lucide="phone"></i>
+                        <span>+2349070724260</span>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <input type="email" placeholder="Enter your email" style="flex: 1; padding: 0.5rem; border: 1px solid var(--border); border-radius: var(--radius);">
+                        <button class="btn btn-primary">
+                            <i data-lucide="send"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Hisnak Marketplace. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Learn N' Earn Modal -->
+    <div id="learnEarnModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeLearnEarnModal()">
+                <i data-lucide="x"></i>
+            </button>
+            
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <div class="section-badge" style="margin-bottom: 1rem;">
+                    🔥 Limited Time Offer - 80% OFF!
+                </div>
+                <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;">
+                    Would You Like to Learn How to <span style="background: linear-gradient(135deg, #1e3a8a, #059669); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Make Money Online?</span>
+                </h2>
+                <p style="font-size: 1.25rem; color: var(--muted-foreground); margin-bottom: 2rem;">
+                    Transform your financial future with the Hisnak Affiliate Networking Program. 
+                    Join thousands earning passive income through our proven system.
+                </p>
+                <div style="padding: 1rem; background: rgba(217, 119, 6, 0.1); border: 1px solid rgba(217, 119, 6, 0.2); border-radius: var(--radius); margin-bottom: 2rem;">
+                    <p style="font-weight: 600; color: var(--gold);">
+                        ⚠️ Special Launch Price: Only ₦2,000 (Regular Price: ₦10,000) - Expires in 24 days!
+                    </p>
+                </div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+                <div style="background: var(--card); padding: 1.5rem; border-radius: var(--radius); box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center;">
+                    <div style="width: 3rem; height: 3rem; background: rgba(30, 58, 138, 0.1); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+                        <i data-lucide="dollar-sign" style="color: var(--primary);"></i>
+                    </div>
+                    <h3 style="font-weight: 600; margin-bottom: 0.5rem;">Earn ₦100K - ₦1M Monthly</h3>
+                    <p style="color: var(--muted-foreground); font-size: 0.875rem;">Build sustainable passive income through our proven affiliate networking system</p>
+                </div>
+                
+                <div style="background: var(--card); padding: 1.5rem; border-radius: var(--radius); box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center;">
+                    <div style="width: 3rem; height: 3rem; background: rgba(5, 150, 105, 0.1); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+                        <i data-lucide="users" style="color: var(--accent);"></i>
+                    </div>
+                    <h3 style="font-weight: 600; margin-bottom: 0.5rem;">Join 10K+ Success Stories</h3>
+                    <p style="color: var(--muted-foreground); font-size: 0.875rem;">Connect with a thriving community of successful affiliate networkers</p>
+                </div>
+                
+                <div style="background: var(--card); padding: 1.5rem; border-radius: var(--radius); box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center;">
+                    <div style="width: 3rem; height: 3rem; background: rgba(217, 119, 6, 0.1); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+                        <i data-lucide="zap" style="color: var(--gold);"></i>
+                    </div>
+                    <h3 style="font-weight: 600; margin-bottom: 0.5rem;">Start Today - Only ₦2,000</h3>
+                    <p style="color: var(--muted-foreground); font-size: 0.875rem;">Limited time offer: 80% OFF the regular price of ₦10,000</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center;">
+                <a href="mailto:admin@hisnak.com?subject=Learn N' Earn Program Registration" class="btn btn-primary btn-lg" style="margin-right: 1rem;">
+                    <i data-lucide="dollar-sign"></i>
+                    Start Today - Only ₦2,000!
+                    <i data-lucide="arrow-right"></i>
+                </a>
+                <button class="btn btn-outline btn-lg" onclick="closeLearnEarnModal()">
+                    Learn More
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            // Add mobile menu functionality here
+            console.log('Mobile menu toggled');
+        }
+
+        // Learn N' Earn Modal
+        function openLearnEarnModal() {
+            document.getElementById('learnEarnModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLearnEarnModal() {
+            document.getElementById('learnEarnModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('learnEarnModal');
+            if (event.target === modal) {
+                closeLearnEarnModal();
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Newsletter subscription
+        document.querySelector('input[type="email"]').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const email = this.value;
+                if (email) {
+                    alert('Thank you for subscribing! We\'ll keep you updated.');
+                    this.value = '';
+                }
+            }
+        });
+
+        // Add some interactive effects
+        document.querySelectorAll('.stat-card, .feature-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
 </html>
