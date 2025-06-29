@@ -17,7 +17,8 @@ import {
   List,
   TrendingUp,
   Users,
-  DollarSign
+  DollarSign,
+  Clock
 } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -297,6 +298,12 @@ export default function ProductsPage() {
                   >
                     {product.commission} Commission
                   </Badge>
+                  <Badge 
+                    className="absolute bottom-3 left-3 bg-yellow-500/90 text-yellow-900 border-none"
+                  >
+                    <Clock className="h-3 w-3 mr-1" />
+                    Coming Soon
+                  </Badge>
                 </div>
               </CardHeader>
 
@@ -333,11 +340,9 @@ export default function ProductsPage() {
 
               <CardFooter className={`${viewMode === 'grid' ? 'p-6 pt-0' : 'p-4 pt-0'} space-y-3`}>
                 <div className="flex space-x-2 w-full">
-                  <Button className="flex-1" asChild>
-                    <Link href={`/products/${product.id}`}>
-                      <ExternalLink className="h-4 w-4 mr-2" />
-                      Learn More
-                    </Link>
+                  <Button className="flex-1" disabled>
+                    <Clock className="h-4 w-4 mr-2" />
+                    Coming Soon
                   </Button>
                   <Button variant="outline" size="icon" asChild>
                     <Link href={`/vendor/${product.vendor.toLowerCase().replace(' ', '-')}`}>
