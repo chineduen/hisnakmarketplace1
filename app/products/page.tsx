@@ -26,9 +26,9 @@ import { useState } from 'react';
 const allProducts = [
   {
     id: 1,
-    title: 'The Income Generation System (TIGS Program)',
+    title: 'The Income Generation System (The TIGS Program)',
     category: 'Skill-Based Course',
-    price: '₦20,000',
+    price: '₦310,000',
     commission: '50%',
     rating: 4.9,
     reviews: 1250,
@@ -39,6 +39,20 @@ const allProducts = [
   },
   {
     id: 2,
+    title: 'A Beginner\'s Blueprint to Passive Income Generation',
+    category: 'Educational Program',
+    price: '₦10,000',
+    commission: '50%',
+    rating: 4.9,
+    reviews: 892,
+    image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg',
+    vendor: 'Hisnak Academy',
+    featured: true,
+    sales: 3450,
+    description: 'Complete guide to building passive income streams through affiliate networking and digital entrepreneurship.'
+  },
+  {
+    id: 3,
     title: 'Digital Marketing Mastery Course',
     category: 'Educational Program',
     price: '₦35,000',
@@ -51,7 +65,7 @@ const allProducts = [
     sales: 3210
   },
   {
-    id: 3,
+    id: 4,
     title: 'Cryptocurrency Trading Blueprint',
     category: 'Information Product',
     price: '₦45,000',
@@ -64,7 +78,7 @@ const allProducts = [
     sales: 2890
   },
   {
-    id: 4,
+    id: 5,
     title: 'Freelance Success Toolkit',
     category: 'Skill-Based Course',
     price: '₦25,000',
@@ -77,7 +91,7 @@ const allProducts = [
     sales: 4120
   },
   {
-    id: 5,
+    id: 6,
     title: 'AI Business Automation Suite',
     category: 'App Software',
     price: '₦60,000',
@@ -90,7 +104,7 @@ const allProducts = [
     sales: 1560
   },
   {
-    id: 6,
+    id: 7,
     title: 'Network Marketing Conference 2024',
     category: 'Event Ticket',
     price: '₦15,000',
@@ -103,7 +117,7 @@ const allProducts = [
     sales: 890
   },
   {
-    id: 7,
+    id: 8,
     title: 'E-commerce Dropshipping Masterclass',
     category: 'Educational Program',
     price: '₦30,000',
@@ -114,19 +128,6 @@ const allProducts = [
     vendor: 'E-com Experts',
     featured: false,
     sales: 2340
-  },
-  {
-    id: 8,
-    title: 'Social Media Growth Hacks',
-    category: 'Information Product',
-    price: '₦18,000',
-    commission: '50%',
-    rating: 4.7,
-    reviews: 892,
-    image: 'https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg',
-    vendor: 'Social Gurus',
-    featured: false,
-    sales: 3450
   }
 ];
 
@@ -318,6 +319,11 @@ export default function ProductsPage() {
                   <p className="text-sm text-muted-foreground">
                     by {product.vendor}
                   </p>
+                  {product.description && (
+                    <p className="text-xs text-muted-foreground line-clamp-2">
+                      {product.description}
+                    </p>
+                  )}
                 </div>
 
                 <div className="flex items-center justify-between">
@@ -340,10 +346,18 @@ export default function ProductsPage() {
 
               <CardFooter className={`${viewMode === 'grid' ? 'p-6 pt-0' : 'p-4 pt-0'} space-y-3`}>
                 <div className="flex space-x-2 w-full">
-                  <Button className="flex-1" disabled>
-                    <Clock className="h-4 w-4 mr-2" />
-                    Coming Soon
-                  </Button>
+                  {product.id === 2 ? (
+                    <Button className="flex-1" asChild>
+                      <Link href="/learn-earn">
+                        Learn More
+                      </Link>
+                    </Button>
+                  ) : (
+                    <Button className="flex-1" disabled>
+                      <Clock className="h-4 w-4 mr-2" />
+                      Coming Soon
+                    </Button>
+                  )}
                   <Button variant="outline" size="icon" asChild>
                     <Link href={`/vendor/${product.vendor.toLowerCase().replace(' ', '-')}`}>
                       <MessageCircle className="h-4 w-4" />
@@ -351,7 +365,7 @@ export default function ProductsPage() {
                   </Button>
                 </div>
                 <p className="text-xs text-center text-muted-foreground">
-                  Contact Vendor • Earn up to {product.commission}
+                  Connect With Vendor • Earn up to {product.commission}
                 </p>
               </CardFooter>
             </Card>
