@@ -1,0 +1,16 @@
+# Render deployment configuration for Next.js app
+services:
+  - type: web
+    name: hisnak-marketplace
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_PUBLIC_API_URL
+        value: https://api.hisnak.com/v1
+      - key: NEXT_PUBLIC_STRIPE_PUBLIC_KEY
+        sync: false
+      - key: NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY
+        sync: false
