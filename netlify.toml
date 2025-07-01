@@ -1,9 +1,10 @@
 [build]
   publish = "out"
-  command = "npm run build && npm run export"
+  command = "npm install && npm run build"
 
 [build.environment]
   NODE_VERSION = "18"
+  NPM_VERSION = "8"
 
 [[redirects]]
   from = "/*"
@@ -16,4 +17,8 @@
 
 [context.deploy-preview.environment]
   NEXT_PUBLIC_API_URL = "https://api-staging.hisnak.com/v1"
+  NEXT_PUBLIC_STRIPE_PUBLIC_KEY = "pk_test_your_stripe_test_key"
+
+[context.branch-deploy.environment]
+  NEXT_PUBLIC_API_URL = "https://api-dev.hisnak.com/v1"
   NEXT_PUBLIC_STRIPE_PUBLIC_KEY = "pk_test_your_stripe_test_key"
